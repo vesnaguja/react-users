@@ -1,3 +1,5 @@
+import { hideMail } from '../utilities/functions';
+
 const ListItem = (props) => {
   return (
     <div className="px-3">
@@ -7,7 +9,7 @@ const ListItem = (props) => {
         </div>
         <div className="ps-3">
           <p className="m-0">name: {props.user.name.first}</p>
-          <p className="m-0">email: {props.user.email.split('@')[0].slice(0,3)+'...@'+props.user.email.split('@')[1]}</p>
+          <p className="m-0">email: {hideMail(props.user.email)}</p>
           <p className="m-0">date of birth: {props.user.dob.date}</p>
         </div>
       </div>
