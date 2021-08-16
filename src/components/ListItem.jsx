@@ -1,4 +1,4 @@
-import { hideMail } from '../utilities/functions';
+import { hideMail, formatDate } from '../utilities/functions';
 
 const ListItem = (props) => {
   return (
@@ -10,7 +10,7 @@ const ListItem = (props) => {
         <div className="ps-3">
           <p className="m-0">name: {props.user.name.first}</p>
           <p className="m-0">email: {hideMail(props.user.email)}</p>
-          <p className="m-0">date of birth: {props.user.dob.date}</p>
+          <p className="m-0">date of birth: {formatDate(props.user.dob.date)}</p>
         </div>
       </div>
     </div>
