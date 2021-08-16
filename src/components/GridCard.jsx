@@ -10,7 +10,9 @@ const GridCard = (props) => {
         </div>        
       </div>
       <div className="card card-body">
-          <p className="card-text m-0">email: {props.user.email}</p>
+          <p className="card-text m-0">email: {            
+            props.user.email.split('@')[0].slice(0,3)+'...@'+props.user.email.split('@')[1]           
+          }</p>
           <p className="card-text m-0">date of birth: {props.user.dob.date}</p>
         </div>
     </div>
