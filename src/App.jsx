@@ -1,25 +1,46 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 
 import Header from "./components/Header";
 import DisplayUsers from "./components/DisplayUsers.jsx";
 import Footer from "./components/Footer";
 
-import { users } from "./data/user-list";
+import { getUsers } from "./services/userService";
 
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isGridView: false,
+      userList: [],
+    };
 
-function App() {
+    // bind
+    this.gridViewHandler = this.gridViewHandler.bind(this);
+  }
 
-  const[gridView, setGridView] = useState(false);
+  gridViewHandler() {
+    this.setState({
+      isGridView: !this.state.isGridView,
+    });
+  }
 
-  const gridViewHandler = () => setGridView(!gridView);
+  blabla() {}
 
-  return (
-    <>
-      <Header isGridView={gridView} buttonHandler={gridViewHandler} />
-      <DisplayUsers isGridView={gridView} users={users} /> 
-      <Footer />
-    </>
-  );
+  componentDidMount() {
+    getUsers().then((users) => {
+      this.setState({ userList: users });
+    });
+  }
+
+  render() {
+    return (
+      <>
+        <Header isGridView={this.state.isGridView} buttonHandler={this.gridViewHandler} />
+        <DisplayUsers isGridView={this.state.isGridView} users={this.state.userList} />
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default App;
