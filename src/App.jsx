@@ -24,8 +24,6 @@ class App extends Component {
     });
   }
 
-  blabla() {}
-
   componentDidMount() {
     getUsers().then((users) => {
       this.setState({ userList: users });
